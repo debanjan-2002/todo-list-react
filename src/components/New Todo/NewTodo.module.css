@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400;700&display=swap");
+
 .new_todo__container {
     display: flex;
     flex-direction: column;
@@ -6,12 +8,14 @@
 }
 
 .new_todo__container textarea {
-    padding: 15px 20px;
-    font-size: 1.1rem;
+    padding: 10px 20px;
+    font-size: 1.2rem;
     width: 100%;
     border: 2px solid rgb(180, 180, 180);
     border-radius: 5px;
     resize: vertical;
+    font-family: "Baloo Bhai 2", cursive;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 8px;
 }
 
 .new_todo__container button {
@@ -26,6 +30,13 @@
     font-weight: 700;
     width: fit-content;
     border-radius: 1.5em;
+    transition: 200ms all;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.new_todo__container button:hover {
+    background-color: blueviolet;
+    transform: translateY(-1px);
 }
 
 .new_todo__container textarea:focus {
@@ -33,5 +44,18 @@
 }
 
 .new_todo__container.invalid textarea {
-    border: 2px solid red;
+    border: 2px solid rgb(255, 120, 120);
+    animation: shake 300ms;
+}
+
+@keyframes shake {
+    25% {
+        transform: translateX(4px);
+    }
+    50% {
+        transform: translateX(-4px);
+    }
+    75% {
+        transform: translateX(4px);
+    }
 }
