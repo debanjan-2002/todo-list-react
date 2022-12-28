@@ -21,7 +21,7 @@ const TodoItem = props => {
             </div>
             <div className={styles.todo_item__content}>{props.todoText}</div>
             <div className={styles.todo_item__delete}>
-                <button onClick={deleteTodoHandler}>Delete</button>
+                <button onClick={deleteTodoHandler}>X</button>
             </div>
         </li>
     );
