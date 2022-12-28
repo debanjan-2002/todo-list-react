@@ -12,16 +12,20 @@ const App = () => {
         setTodoArray(prevState => {
             return [
                 ...prevState,
-                { text: enteredData, id: new Date().getTime().toString() }
+                { text: enteredData, id: Math.random().toString() }
             ];
         });
-        console.log(todoArray);
+    };
+
+    const deleteHandler = todoId => {
+        const filteredTodos = todoArray.filter(todo => todo.id !== todoId);
+        setTodoArray(filteredTodos);
     };
     return (
         <div className={styles.container}>
             <Header />
             <NewTodo onAddTodo={addTodoHandler} />
-            <TodoList todos={todoArray} />
+            <TodoList todos={todoArray} onDeleteTodo={deleteHandler} />
         </div>
     );
 };
