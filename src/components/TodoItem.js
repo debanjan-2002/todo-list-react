@@ -1,22 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styles from "./TodoItem.module.css";
 
 const TodoItem = props => {
-    const [isDone, setIsDone] = useState(false);
-
     const deleteTodoHandler = () => {
         props.onDelete(props.id);
     };
 
     const strokeTodoHandler = () => {
-        setIsDone(prevIsDone => !prevIsDone);
+        props.onStroke(props.id, !props.isCompleted);
     };
 
     return (
-        <li className={`${styles.todo_item} ${isDone && styles.done}`}>
+        <li
+            className={`${styles.todo_item} ${
+                props.isCompleted && styles.done
+            }`}
+        >
             <div className={styles.todo_item__stroke}>
-                <input type="checkbox" onChange={strokeTodoHandler} />
+                <input
+                    type="checkbox"
+                    checked={props.isCompleted}
+                    onChange={strokeTodoHandler}
+                />
             </div>
             <div className={styles.todo_item__content}>{props.todoText}</div>
             <div className={styles.todo_item__delete}>

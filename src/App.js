@@ -22,7 +22,11 @@ const App = () => {
         setTodoArray(prevState => {
             return [
                 ...prevState,
-                { text: enteredData, id: Math.random().toString() }
+                {
+                    text: enteredData,
+                    id: Math.random().toString(),
+                    isCompleted: false
+                }
             ];
         });
     };
@@ -31,11 +35,26 @@ const App = () => {
         const filteredTodos = todoArray.filter(todo => todo.id !== todoId);
         setTodoArray(filteredTodos);
     };
+
+    const strokeHandler = (todoId, isDone) => {
+        const filteredTodos = todoArray.map(todo => {
+            if (todo.id === todoId) {
+                todo.isCompleted = isDone;
+            }
+            return todo;
+        });
+        setTodoArray(filteredTodos);
+    };
+
     return (
         <div className={styles.container}>
             <Header />
             <NewTodo onAddTodo={addTodoHandler} />
-            <TodoList todos={todoArray} onDeleteTodo={deleteHandler} />
+            <TodoList
+                todos={todoArray}
+                onDeleteTodo={deleteHandler}
+                onStrokeTodo={strokeHandler}
+            />
         </div>
     );
 };
