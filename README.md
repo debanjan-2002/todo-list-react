@@ -1,3 +1,3 @@
 ## TODO List App (React)
 
-![](screenshot.png)
+![](/screenshot.png)
