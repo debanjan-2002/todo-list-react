@@ -10,8 +10,7 @@ const TodoItem = props => {
     };
 
     const strokeTodoHandler = () => {
-        console.log("Stroked");
-        setIsDone(!isDone);
+        setIsDone(prevIsDone => !prevIsDone);
     };
 
     return (
